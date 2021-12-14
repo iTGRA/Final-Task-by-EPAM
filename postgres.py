@@ -63,7 +63,6 @@ with open('/var/www/html/articles.html', 'w') as file:
     file.write(foot_html)
 
 if conn:
-        cursor.close()
         conn.close()
         print("Postgres connection is closed.")
 

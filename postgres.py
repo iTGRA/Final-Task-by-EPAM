@@ -6,7 +6,7 @@ import psycopg2
 current_time = datetime.now()
 # Connecting to Postgres
 conn = psycopg2.connect(
-    host="192.168.98.10",
+    host="db.final",
     database="anton",
     user="anton",
     password="anton")

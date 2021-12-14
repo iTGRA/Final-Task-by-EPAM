@@ -1,9 +1,10 @@
 #!/usr/bin/python3
+
 from datetime import datetime
 import psycopg2
 
 current_time = datetime.now()
-
+# Connecting to Postgres
 conn = psycopg2.connect(
     host="192.168.56.22",
     database="anton",
@@ -21,6 +22,7 @@ cur.execute('SELECT version()')
 db_version = cur.fetchone()
 print(db_version)
 
+# Fetching data from SQL
 cur.execute(
     'select magazines.name, article_types.type, author.author from magazines, article_types, author, "articles" where articles.magazines_id = magazines.id and articles.article_type_id = article_types.id and articles.author_id = author.id')
 print(f"There are {cur.rowcount} rows in table")
@@ -30,7 +32,8 @@ articles = []
 while row is not None:
     articles.append(row)
     row = cur.fetchone()
-
+    
+# Composing HTML template
 head_html = '''
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -50,6 +53,7 @@ head_html = '''
 
 foot_html = str(f"</table></center><p><p><p align=left> Valid for: {current_time}</p></body></html>")
 
+# Composing HTML table with SQL data
 with open('/var/www/html/articles.html', 'w') as file:
     file.write(head_html)
     for line in articles:
@@ -62,7 +66,7 @@ with open('/var/www/html/articles.html', 'w') as file:
         file.write("\n")
     file.write(foot_html)
 
+# Closing SQL connection
 if conn:
         conn.close()
         print("Postgres connection is closed.")
-

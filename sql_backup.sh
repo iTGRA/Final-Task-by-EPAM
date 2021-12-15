@@ -1,4 +1,5 @@
 #!/bin/bash
+# This script must be in DB
 
 max_count=3
 db_name=articles

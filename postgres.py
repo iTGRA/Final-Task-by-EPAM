@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# This script must be on WEB
 
 from datetime import datetime
 import psycopg2

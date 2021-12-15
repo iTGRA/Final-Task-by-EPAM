@@ -1,4 +1,5 @@
 #!/bin/bash
+# This script must be on DB
 
 IFS=$'\n'
 # Filling the "Mazagines" table

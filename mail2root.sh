@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+# This script must be on DB
 
 pid=/var/run/mail2root.pid
 backup=/local/backups

@@ -9,7 +9,7 @@ query='SELECT magazines.name, article_types.type, author.author FROM magazines, 
 db_user=anton
 
 # Fetching data from SQL into text file.
-echo $query | psql -U $db_user > $files/$db_name.`date +%Y.%m.%d-%H.%M.%S`.sql && echo "Export raw data from table '${db_name}' into .sql file"
+echo $query | psql -U $db_user > $files/$db_name.`date +%Y.%m.%d-%H.%M`.sql && echo "Export raw data from table '${db_name}' into .sql file"
 ls -l $files
 
 num=$(ls -l ${files} | wc -l)
